@@ -130,6 +130,7 @@ while True:
 
     #ITEM FUNCTIONS
     if command == "p":
+        room.pop(player.current_room.items)
         player.pickup(items)
-        room.remove(player.current_room.items)
+        ## working on this ^^
         
