@@ -44,6 +44,19 @@ items = {
     "Gold": Item("Gold", "very shiny and bright!")
 }
 
+# Declare Consumables
+consumables = {
+    "Health_Potion": Item("Health Potion", "Heals To Full"),
+    "Mana_Potion": Item("Mana Potion", "Fills Mana"),
+    "Speed_Potion": Item("Speed Potion", "Faster Walking Speed"),
+    "Focus_Potion": Item("Focus Potion", "Laser Beam Focus")
+}
+
+room['treasure'].items.append(str(consumables))
+
+# room['treasure'].items.append(for i in consumables)
+
+
 # Add Loot to rooms
 room['foyer'].items.append(items['Meat'])
 room['outside'].items.append(items['Poison'])
@@ -64,7 +77,7 @@ def input_parser():
 
 # AN INSTANCE OF THE PLAYER/CLASS
 # Make a new player object that is currently in the 'outside' room.
-player = Player('Bobby', room['outside'], [])
+player = Player('Bobby', room['outside'])
 # room = Room("", "", )
 
 # Write a loop that:
@@ -85,20 +98,19 @@ while True:
     
     # Items 
     if (len(player.current_room.items) < 1):
-        print("Loot: ")
+        print("Loot/Items: ")
     else:
         print(f"Loot/Items: ")
-        print("============\n\n")
+        print("============\n")
         # for item in player.current_room.items:
-        print(str(player.current_room))
         print(f"{player.current_room}  \n")
     
     # Inventory
     print("=====================================================")
     if (len(player.inventory) < 1):
-        print("Your inventory is empty!!!")
+        print("YOUR INVENTORY IS EMPTY\n")
     else:
-        print(f"INVENTORY: \n {player.inventory} \n")
+        
     print("=====================================================")
         
     
@@ -137,16 +149,19 @@ while True:
 
 
     #ITEM FUNCTIONS
+    
+    #if player input == 'p'
     if command == "p":
         
         player.pickup(items)
         # Room.remove(player.current_room.items)
         ## working on this ^^
-        ## moved on to drop item
     
+    #if player input == 'd'
     if command == "d":
-        
         player.drop(items)
+
+        
         
         
     
