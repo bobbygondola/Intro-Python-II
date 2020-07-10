@@ -14,8 +14,9 @@ class Room:
     #write removed function
     # on remove .remove from self.items
     # returns?
+    #call it in adv
     def remove(self, items):
-        return self.items.remove()
+        return self.remove([items])
     
     
     

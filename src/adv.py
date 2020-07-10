@@ -36,7 +36,7 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#declare items
+# Declare Loot
 items = {
     "Meat": Item("Meat", "A pile of rotten meat"),
     "Poison": Item("Poison", "Used in an assassination attempt, be wary!"),
@@ -44,7 +44,7 @@ items = {
     "Gold": Item("Gold", "very shiny and bright!")
 }
 
-# Add items to rooms
+# Add Loot to rooms
 room['foyer'].items.append(items['Meat'])
 room['outside'].items.append(items['Poison'])
 room['narrow'].items.append(items['Ice'])
@@ -52,48 +52,53 @@ room['overlook'].items.append(items['Gold'])
 
 
 
-# Create input parser 
+# Create an input parser 
 def input_parser():
     command = input("Please type one of the following commands: \nn (to go north), \ns (to go south), \ne (to go east), \nw (to go west), \nor q (to exit the game)\n").strip().lower().split()[0]
     command = command[0]
     return command
 
 # If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
+# Print an error message if the movement isn't allowed. **
 
 
 # AN INSTANCE OF THE PLAYER/CLASS
 # Make a new player object that is currently in the 'outside' room.
 player = Player('Bobby', room['outside'], [])
+# room = Room("", "", )
 
 # Write a loop that:
 # * Prints the current room name
 
+print("=====================================================\n")
 
+print(f"Welcome, {player.name}")
+print("______________" + "\n")
+
+print("=====================================================\n")
 while True:
     # print player name, current location, and location description
-    print(f"Welcome, {player.name}")
-    print("______________" + "\n")
+
     print(f"You currently reside in the {player.current_room.name}")
     print(player.current_room.description + "\n")
-    print("=====================================================")
+    
     
     # Items 
     if (len(player.current_room.items) < 1):
-        print("This is where items will be!")
+        print("Loot: ")
     else:
-        print(f"Available Items: ")
-        print("================")
+        print(f"Loot/Items: ")
+        print("============\n\n")
         # for item in player.current_room.items:
-        #     print(item)
-        print(player.current_room)
+        print(str(player.current_room))
+        print(f"{player.current_room}  \n")
     
     # Inventory
     print("=====================================================")
     if (len(player.inventory) < 1):
         print("Your inventory is empty!!!")
     else:
-        print(f"INVENTORY: \n {player.inventory}")
+        print(f"INVENTORY: \n {player.inventory} \n")
     print("=====================================================")
         
     
@@ -125,12 +130,26 @@ while True:
     if command == 'w':
         player = Player(player.name, player.current_room.w_to, [])
         print(f"You move west and enter the {player.current_room.name}")
+        
+    if command == 'bb':
+        player = Player(player.name, player.current_room.w_to, []) ## no an obj ^^
     
 
 
     #ITEM FUNCTIONS
     if command == "p":
-        room.pop(player.current_room.items)
+        
         player.pickup(items)
+        # Room.remove(player.current_room.items)
         ## working on this ^^
+        ## moved on to drop item
+    
+    if command == "d":
+        
+        player.drop(items)
+        
+        
+    
+    
+    
         

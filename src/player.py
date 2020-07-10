@@ -11,3 +11,7 @@ class Player:
     def pickup(self, items):
         #add item to players inventory
         self.inventory.append(str(self.current_room.items))
+    
+    def drop(self, items):
+        ##delete from inventory
+        self.inventory.remove(str(self.current_room.items))
