@@ -9,7 +9,9 @@ class Room:
         self.items = []
     
     def __str__(self):
-        return f" {self.items}"
+        for i in self.items:
+            return str(i)
+        # return f" {self.items[0]}" # works too
     
     #write removed function
     # on remove .remove from self.items
