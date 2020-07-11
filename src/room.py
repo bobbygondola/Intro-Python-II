@@ -9,14 +9,12 @@ class Room:
         self.items = []
     
     def __str__(self):
-        return f" {self.items[0]}"
+        return f" {self.items}"
     
     #write removed function
     # on remove .remove from self.items
-    # returns?
-    #call it in adv
-    # def remove(self, items):
-    #     return self.remove([items])
+    def remove(self):
+        self.items.remove(self.items[0])
     
     
     
