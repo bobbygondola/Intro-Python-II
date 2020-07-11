@@ -2,6 +2,20 @@
 # currently.
 
 class Player:
+    
     def __init__(self, name, current_room):
         self.name = name
         self.current_room = current_room
+        self.inventory = []
+    
+    def __str__(self):
+        return f"Name: {self.inventory[0]}"
+    
+    def pickup(self):
+        #add item to players inventory
+        self.inventory.append(self.current_room.items[0])
+        # self.current_room.remove(self.current_room.items[0])
+    
+    def drop(self):
+        ##delete from inventory
+        self.inventory.remove(self.current_room.items[0])
