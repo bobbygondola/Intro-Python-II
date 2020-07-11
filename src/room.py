@@ -10,7 +10,7 @@ class Room:
     
     def __str__(self):
         for i in self.items:
-            return str(i)
+            return str(i)            # still doesnt display all potions
         # return f" {self.items[0]}" # works too
     
     #write removed function
